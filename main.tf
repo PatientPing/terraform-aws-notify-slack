@@ -75,7 +75,8 @@ module "lambda" {
   description   = var.lambda_description
 
   handler                        = "notify_slack.lambda_handler"
-  source_path                    = "${path.module}/functions/notify_slack.py"
+  create_package                 = false
+  local_existing_package         = "${path.module}/functions/notify_slack.zip"
   runtime                        = "python3.8"
   timeout                        = 30
   kms_key_arn                    = var.kms_key_arn
